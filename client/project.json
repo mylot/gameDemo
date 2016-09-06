@@ -11,6 +11,6 @@
     "cocos2d"
   ],
   "jsList": [
-    "src/compiled.js"
+    "./compiled/app.js"
   ]
 }

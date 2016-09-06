@@ -3,7 +3,7 @@
  */
 
 import {res} from '../ui/resource';
-import {SushiSprite} from './SushiSprite';
+import {SushiSprite} from './sushiSprite';
 
 const PlayLayer = cc.Layer.extend({
   sushiArray: null,

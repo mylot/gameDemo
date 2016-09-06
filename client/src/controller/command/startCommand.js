@@ -2,18 +2,18 @@
  * Created by leo on 2016/8/1.
  */
 
-import {puremvc} from 'puremvc';
+const puremvc = require('puremvc');
+const ConnectProxy = require('../../model/proxy/connectProxy');
 
-export class StartCommand extends puremvc.SimpleCommand {
+module.exports = class StartCommand extends puremvc.SimpleCommand {
   /** @override */
   execute(notification) {
-    cc.log('in start cmd');
     // register proxy
-    // this.facade.registerProxy(new GameProxy() );
+    this.facade.registerProxy(new ConnectProxy());
 
     // register mediator
     // this.facade.registerMediator(new DirectorMediator());
     // this.facade.registerMediator(new SceneMediator());
     // this.facade.registerMediator(new GameMediator());
   }
-}
+};

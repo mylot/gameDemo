@@ -2,14 +2,16 @@
  * Created by leo on 2016/8/1.
  */
 
-import {puremvc} from 'puremvc';
-import * as controller from './controller/command';
+const puremvc = require('puremvc');
+const {
+  StartCommand,
+} = require('./controller/command');
 
-export class AppFacade extends puremvc.Facade {
+class AppFacade extends puremvc.Facade {
    /** @override */
   initializeController() {
     super.initializeController();
-    this.registerCommand(AppFacade.START_APP, controller.StartCommand);
+    this.registerCommand(AppFacade.START_APP, StartCommand);
   }
 
   /** @override */
@@ -36,3 +38,5 @@ export class AppFacade extends puremvc.Facade {
 }
 
 AppFacade.START_APP = 'StartApp';
+
+module.exports = AppFacade;

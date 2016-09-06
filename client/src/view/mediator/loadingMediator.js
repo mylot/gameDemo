@@ -3,12 +3,11 @@
  */
 
 import {puremvc} from 'puremvc';
-import {LoadingScene} from '../component/LoadingScene';
+import {LoadingScene} from '../component/loadingScene';
 
 export class LoadingMediator extends puremvc.Mediator {
 
   /** @override */
-  onRegister
 
 }
 

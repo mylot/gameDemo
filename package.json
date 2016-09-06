@@ -1,20 +1,29 @@
 {
-  "name": "cocos2d-js-es6",
+  "name": "game-demo",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "eslint": "eslint"
+    "eslint": "eslint",
+    "server-start": "pomelo start -d ./server",
+    "server-stop": "pomelo stop",
+    "server-cli": "pomelo-cli",
+    "webpack": "webpack --watch --progress",
+    "client-build": "start cmd.exe @cmd /k npm run webpack"
   },
   "author": "",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "pomelo": "^1.2.1",
+    "pomelo-cocos2d-js": "^0.1.4",
+    "puremvc": "^1.0.4"
+  },
   "babel": {
     "stage": 0
   },
   "devDependencies": {
     "babel": "^6.5.2",
+    "babel-cli": "^6.11.4",
     "babel-core": "^6.0.0",
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",
@@ -27,8 +36,6 @@
     "eslint-plugin-import": "^1.12.0",
     "eslint-plugin-jsx-a11y": "^1.2.0",
     "eslint-plugin-react": "^5.2.2",
-    "puremvc": "^1.0.2",
-    "webpack": "^1.13.1",
-    "pomelo":"1.2.0"
+    "webpack": "^1.13.1"
   }
 }

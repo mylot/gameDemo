@@ -5,11 +5,11 @@
 import path from 'path';
 
 export default {
-  entry: './client/src/main.js',
+  entry: './client/src/app.js',
   devtool: '#cheap-module-eval-source-map',
   output: {
-    path: path.resolve(__dirname, 'client/src'),
-    filename: 'compiled.js',
+    path: './client/compiled',
+    filename: 'app.js',
   },
   module: {
     loaders: [{
