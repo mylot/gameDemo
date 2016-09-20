@@ -2,6 +2,8 @@
  * Created by leo on 2016/7/22.
  */
 
+'use strict';
+
 const pomelo = require('pomelo');
 const routeUtil = require('./app/util/routeUtil');
 
@@ -9,7 +11,7 @@ const app = pomelo.createApp();
 app.set('name', 'gameDemo');
 
 // app configuration
-app.configure('production|development', 'connector', () => {
+app.configure('production|development', 'conn', () => {
   app.set('connectorConfig',
     {
       connector: pomelo.connectors.hybridconnector,
@@ -24,14 +26,14 @@ app.configure('production|development', 'gate', () => {
     {
       connector: pomelo.connectors.hybridconnector,
       heartbeat: 3,
-      // useProtobuf: true,
-      useCrypto: false,
+      useDict: true,
+      useProtobuf: true,
     });
 });
 
 app.configure('production|development', () => {
   // route configures
-  app.route('chat', routeUtil.chat);
+  app.route('game', routeUtil.chat);
 
   // filter configures
   app.filter(pomelo.timeout());

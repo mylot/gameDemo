@@ -2,8 +2,10 @@
  * Created by leo on 2016/7/22.
  */
 
-export const resArray = [];
-export const res = {
+'use strict';
+
+const all = [];
+const res = {
   backgroundPng: 'res/background.png',
   startNPng: 'res/start_N.png',
   startSPng: 'res/start_S.png',
@@ -11,6 +13,12 @@ export const res = {
   sushiPlist: 'res/sushi.plist',
 };
 
+// generate all res for preload
 for (const value of Object.values(res)) {
-  resArray.push(value);
+  all.push(value);
 }
+
+module.exports = {
+  all,
+  res,
+};

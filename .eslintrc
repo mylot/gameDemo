@@ -22,8 +22,10 @@
     "eol-last": "off",
     "func-names": "off",
     "arrow-body-style": "off",
+    "no-use-before-define": "off",
+    "no-param-reassign": ["error", {"props": false}],
     "max-len": ["error", {"code": 120}],
-    "indent": ["error", 2],
+    "indent": ["error", 2, {"SwitchCase": 1}],
     "no-unused-vars": ["error", {"vars": "all", "args": "none"}],
     "space-before-function-paren": ["error", "never"],
     "camelcase": ["error", {"properties": "always"}],
@@ -41,6 +43,13 @@
           "AssignmentExpression": true
         }
       }
-    ]
+    ],
+    "require-jsdoc": ["error", {
+      "require": {
+        "FunctionDeclaration": true,
+        "MethodDefinition": true,
+        "ClassDeclaration": false
+      }
+    }]
   }
 }

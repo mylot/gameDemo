@@ -2,7 +2,9 @@
  * Created by leo on 2016/7/22.
  */
 
-import {res} from '../ui/resource';
+'use strict';
+
+const {res} = require('../ui/resource');
 
 const StartLayer = cc.Layer.extend({
 
@@ -46,7 +48,18 @@ const StartLayer = cc.Layer.extend({
   },
 });
 
-export const StartScene = cc.Scene.extend({
+module.exports = cc.Scene.extend({
+  /**
+   * Constructor
+   */
+  ctor() {
+    this._super();
+  },
+
+  init() {
+    this._super();
+    console.log('start scene init');
+  },
 
   /** @override */
   onEnter() {

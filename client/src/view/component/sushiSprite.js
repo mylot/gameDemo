@@ -2,6 +2,8 @@
  * Created by leo on 2016/7/28.
  */
 
+'use strict';
+
 export const SushiSprite = cc.Sprite.extend({
   _disappearAction: null,
   _touchListener: null,

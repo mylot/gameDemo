@@ -2,6 +2,8 @@
  * Created by leo on 2016/7/22.
  */
 
+'use strict';
+
 import {res} from '../ui/resource';
 import {SushiSprite} from './sushiSprite';
 
@@ -11,7 +13,6 @@ const PlayLayer = cc.Layer.extend({
   timeoutLabel: null,
   timeout: null,
 
-  /** @override */
   ctor() {
     this._super();
     this.sushiArray = [];
@@ -90,8 +91,6 @@ const PlayLayer = cc.Layer.extend({
 });
 
 export const PlayScene = cc.Scene.extend({
-
-  /** @override */
   onEnter() {
     this._super();
     const layer = new PlayLayer();
