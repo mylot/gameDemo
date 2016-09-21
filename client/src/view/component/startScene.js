@@ -5,6 +5,8 @@
 'use strict';
 
 const {res} = require('../ui/resource');
+const app = require('../../app');
+const env = require('../../env');
 
 const StartLayer = cc.Layer.extend({
 
@@ -25,10 +27,7 @@ const StartLayer = cc.Layer.extend({
     const startItem = new cc.MenuItemImage(
       res.startNPng,
       res.startSPng,
-      () => {
-        cc.log('Menu is clicked!');
-        cc.director.runScene(new PlayScene());
-      },
+      () => app.instance().sendNotification(env.CMD.RUN_SCENE, {name: env.MVC.PLAY_SCENE}),
       this
     );
     startItem.attr({
@@ -49,16 +48,16 @@ const StartLayer = cc.Layer.extend({
 });
 
 module.exports = cc.Scene.extend({
-  /**
-   * Constructor
-   */
-  ctor() {
-    this._super();
-  },
-
+  /** @override */
   init() {
     this._super();
     console.log('start scene init');
+  },
+
+  /** @override */
+  cleanup() {
+    this._super();
+    console.log('start scene cleanup');
   },
 
   /** @override */

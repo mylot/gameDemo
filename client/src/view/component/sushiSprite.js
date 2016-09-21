@@ -4,7 +4,10 @@
 
 'use strict';
 
-export const SushiSprite = cc.Sprite.extend({
+const app = require('../../app');
+const env = require('../../env');
+
+module.exports = cc.Sprite.extend({
   _disappearAction: null,
   _touchListener: null,
 
@@ -29,8 +32,13 @@ export const SushiSprite = cc.Sprite.extend({
       onTouchBegan: (touch, event) => {
         cc.log(`touched at ${JSON.stringify(touch.getLocation())}`);
 
-        // unregiter event
+        // check touch hit
         const target = event.getCurrentTarget();
+        if (!cc.rectContainsPoint(target.getBoundingBox(), touch.getLocation())) {
+          return false;
+        }
+
+        // unregiter event
         cc.eventManager.removeListener(this._touchListener);
 
         // play disappear
@@ -39,6 +47,9 @@ export const SushiSprite = cc.Sprite.extend({
           this._disappearAction,
           cc.callFunc(target.removeFromParent, target)
         ));
+
+        // add scroe
+        app.instance().sendNotification(env.CMD.SUSHI_TOUCH, {});
         return true;
       },
     });
@@ -50,5 +61,4 @@ export const SushiSprite = cc.Sprite.extend({
     this._disappearAction.release();
     this._super();
   },
-
 });

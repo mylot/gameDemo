@@ -5,35 +5,36 @@
 'use strict';
 
 const loaderTexture = require('../ui/loader');
+const {preload} = require('../ui/resource');
+const app = require('../../app');
+const env = require('../../env');
 
 module.exports = cc.Scene.extend({
   _label: null,
   _progressTimer: null,
+
   // _bgLayer: null,
   // _processLayer: null,
   // _processLayerLength: null,
 
   /**
-   * Preload with resource and cb.
-   * @param resources
-   * @param cb
+   * @override
    */
-  preload(resources, cb) {
-    this.resources = resources;
-    this.cb = cb;
+  init() {
+    this._super();
 
     // logo
     const winSize = cc.director.getWinSize();
     const centerPos = cc.p(winSize.width / 2, winSize.height / 2);
 
     // bg
-    // const bgImg = new Image();
-    // bgImg.src = loaderTexture;
-    // const bgTexture = new cc.Texture2D();
-    // bgTexture.initWithElement(bgImg);
-    // const bgSprite = cc.Sprite.createWithTexture(bgTexture);
-    // bgSprite.setPosition(centerPos);
-    // this.addChild(bgSprite, 0);
+    const bgImg = new Image();
+    bgImg.src = loaderTexture;
+    const bgTexture = new cc.Texture2D();
+    bgTexture.initWithElement(bgImg);
+    const bgSprite = cc.Sprite.createWithTexture(bgTexture);
+    bgSprite.setPosition(centerPos);
+    this.addChild(bgSprite, 0);
 
     // loading bar
     // const barSprite = new cc.Rect(centerPos.x, centerPos.y, winSize.width * 3 / 4, 30);
@@ -63,14 +64,14 @@ module.exports = cc.Scene.extend({
 
   _startLoading() {
     cc.loader.load(
-      this.resources,
+      preload,
       {
         trigger: (result, count, loadedCount) => {
           const percent = loadedCount / count * 100;
           this._label.setString(`Loading... ${percent}%`);
         },
         triggerTarget: this,
-        cb: this.cb,
+        cb: () => app.instance().sendNotification(env.CMD.RUN_SCENE, {name: env.MVC.START_SCENE}),
       }
     );
   },

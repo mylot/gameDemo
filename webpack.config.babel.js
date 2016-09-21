@@ -3,11 +3,11 @@
  */
 
 export default {
-  entry: './client/src/app.js',
+  entry: './client/src/main.js',
   devtool: 'source-map',
   output: {
     path: './client/src/',
-    filename: 'compiled.js',
+    filename: 'main.compiled.js',
   },
   module: {
     loaders: [{

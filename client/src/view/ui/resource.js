@@ -4,7 +4,7 @@
 
 'use strict';
 
-const all = [];
+const preload = [];
 const res = {
   backgroundPng: 'res/background.png',
   startNPng: 'res/start_N.png',
@@ -13,12 +13,12 @@ const res = {
   sushiPlist: 'res/sushi.plist',
 };
 
-// generate all res for preload
+// generate allRes res for preload
 for (const value of Object.values(res)) {
-  all.push(value);
+  preload.push(value);
 }
 
 module.exports = {
-  all,
+  preload,
   res,
 };

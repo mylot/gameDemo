@@ -8,6 +8,7 @@ const puremvc = require('puremvc');
 const env = require('../../env');
 const ConnectProxy = require('../../model/proxy/connectProxy');
 const DirectorMediator = require('../../view/mediator/directorMediator');
+const SceneMediator = require('../../view/mediator/sceneMediator');
 
 module.exports = class StartAppCommand extends puremvc.SimpleCommand {
   /**
@@ -16,12 +17,15 @@ module.exports = class StartAppCommand extends puremvc.SimpleCommand {
    */
   execute(notify: puremvc.Notification) {
     // register proxy
-    // this.facade.registerProxy(new ConnectProxy());
+    this.facade.registerProxy(new ConnectProxy());
 
     // register mediator
     this.facade.registerMediator(new DirectorMediator(env.MVC.DIRECTOR));
+    // this.facade.registerMediator(new SceneMediator(env.MVC.LOADER_SCENE));
+    // this.facade.registerMediator(new SceneMediator(env.MVC.START_SCENE));
+    // this.facade.registerMediator(new SceneMediator(env.MVC.PLAY_SCENE));
 
-    // start first mediator
+    // run first scene
     this.facade.sendNotification(env.CMD.RUN_SCENE, {name: env.MVC.LOADER_SCENE});
   }
 
